@@ -31,7 +31,14 @@ defmodule LiveViewStudioWeb.LightLive do
         <img src="/images/fire.svg" alt="" />
       </button>
       <form phx-change="slider_adjusted">
-        <input type="range" min="0" max="100" name="brightness" value="50" />
+        <input
+          type="range"
+          min="0"
+          max="100"
+          name="brightness"
+          value="50"
+          phx-debounce="250"
+        />
       </form>
       <form phx-change="temp_changed">
         <h4>Light Temperature</h4>
