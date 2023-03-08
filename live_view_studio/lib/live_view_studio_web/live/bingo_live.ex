@@ -5,8 +5,17 @@ defmodule LiveViewStudioWeb.BingoLive do
     socket =
       assign(socket,
         number: nil,
-        numbers: all_numbers()
+        numbers: all_numbers(),
+        all_numbers_called: false
       )
+
+    socket =
+      if connected?(socket) do
+        :timer.send_interval(:timer.seconds(3), self(), :tick)
+        pick(socket)
+      else
+        socket
+      end
 
     {:ok, socket}
   end
@@ -18,27 +27,39 @@ defmodule LiveViewStudioWeb.BingoLive do
       <div class="number">
         <%= @number %>
       </div>
+      <br />
+    </div>
+    <div class="notice" style="color:red; text-align:center;">
+      <%= if @all_numbers_called do %>
+        <p>All numbers called!</p>
+      <% end %>
     </div>
     """
+  end
+
+  def handle_info(:tick, socket) do
+    {:noreply, pick(socket)}
   end
 
   # Assigns the next random bingo number, removing it
   # from the assigned list of numbers. Resets the list
   # when the last number has been picked.
-  def pick(socket) do
+  defp pick(socket) do
     case socket.assigns.numbers do
       [head | []] ->
-        assign(socket, number: head, numbers: all_numbers())
+        # IO.puts("All bingo numbers have been called! Restarting")
+        assign(socket, number: head, numbers: all_numbers(), all_numbers_called: true)
 
       [head | tail] ->
-        assign(socket, number: head, numbers: tail)
+        # IO.puts("#{:erlang.length(tail)} bingo numbers left to be called")
+        assign(socket, number: head, numbers: tail, all_numbers_called: false)
     end
   end
 
   # Returns a list of all valid bingo numbers in random order.
   #
   # Example: ["B 4", "N 40", "O 73", "I 29", ...]
-  def all_numbers() do
+  defp all_numbers() do
     ~w(B I N G O)
     |> Enum.zip(Enum.chunk_every(1..75, 15))
     |> Enum.flat_map(fn {letter, numbers} ->

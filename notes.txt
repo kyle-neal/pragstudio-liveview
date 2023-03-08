@@ -1,0 +1,8 @@
+NOTES ON THE COURSE
+
+Contents of a websocket package:
+["4", null, "lv:phx-F0p-z25g5JDGPAAB", "diff", {1: {0: "12", 1: "515"}}]
+0: "4"                              ## JOIN REF
+1: null                             ## MESSAGE REF
+2: "lv:phx-F0p-z25g5JDGPAAB"        ## PHX CHANNEL TOPIC (each liveview connects to a unique phoneix channel)
+3: "diff"                           ## EVENT
