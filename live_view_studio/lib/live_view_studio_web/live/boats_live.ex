@@ -39,7 +39,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
     ~H"""
     <h1>Daily Boat Rentals</h1>
     <.promo expiration={2}>
-      Save 25% on boat rentals!
+      Save 25% on boat rentals! <.moon_icon />
       <:legal>
         <Heroicons.exclamation_circle /> 1 per person
       </:legal>
@@ -50,7 +50,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
         <.boat :for={boat <- @boats} boat={boat} />
       </div>
       <.promo>
-        Hurry, only 3 days left!
+        Hurry, only 3 days left! <.star_icon />
       </.promo>
     </div>
     """

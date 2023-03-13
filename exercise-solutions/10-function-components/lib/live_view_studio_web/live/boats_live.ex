@@ -2,7 +2,6 @@ defmodule LiveViewStudioWeb.BoatsLive do
   use LiveViewStudioWeb, :live_view
 
   alias LiveViewStudio.Boats
-  import LiveViewStudioWeb.CustomComponents
 
   def mount(_params, _session, socket) do
     socket =
@@ -20,6 +19,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
 
     <.promo expiration={2}>
       Save 25% on rentals!
+       <.moon_icon />
       <:legal>
         <Heroicons.exclamation_circle /> Limit 1 per party
       </:legal>
