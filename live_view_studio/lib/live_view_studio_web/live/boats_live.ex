@@ -3,6 +3,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
 
   alias LiveViewStudio.Boats
   import LiveViewStudioWeb.PromoComponents
+  import LiveViewStudioWeb.CustomComponents
 
   def mount(_params, _session, socket) do
     socket =
@@ -37,6 +38,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
 
   def render(assigns) do
     ~H"""
+    <.badge label="edited" class="bg-blue-300 font-bold" />
     <h1>Daily Boat Rentals</h1>
     <.promo expiration={2}>
       Save 25% on boat rentals! <.moon_icon />
