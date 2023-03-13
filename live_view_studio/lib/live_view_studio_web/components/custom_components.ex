@@ -4,6 +4,14 @@ defmodule LiveViewStudioWeb.CustomComponents do
   # Make icons in live_view_studio_web/components/icons/ directory available as function components
   embed_templates "icons/*"
 
+  # Attributes for icons
+  attr :spinning, :boolean, default: false
+  def moon_icon(assigns)
+
+  attr :points, :integer, required: true
+  def star_icon(assigns)
+
+  # Attributes for promo function component
   attr :expiration, :integer, default: 24
   attr :minutes, :integer
   slot :legal
