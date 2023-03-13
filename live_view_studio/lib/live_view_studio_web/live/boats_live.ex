@@ -2,7 +2,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
   use LiveViewStudioWeb, :live_view
 
   alias LiveViewStudio.Boats
-  import LiveViewStudioWeb.CustomComponents
+  import LiveViewStudioWeb.PromoComponents
 
   def mount(_params, _session, socket) do
     socket =
@@ -50,7 +50,7 @@ defmodule LiveViewStudioWeb.BoatsLive do
         <.boat :for={boat <- @boats} boat={boat} />
       </div>
       <.promo>
-        Hurry, only 3 days left! <.star_icon />
+        Hurry, only 3 days left! <.star_icon points={1} />
       </.promo>
     </div>
     """

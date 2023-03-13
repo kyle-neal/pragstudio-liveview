@@ -11,30 +11,6 @@ defmodule LiveViewStudioWeb.CustomComponents do
   attr :points, :integer, required: true
   def star_icon(assigns)
 
-  # Attributes for promo function component
-  attr :expiration, :integer, default: 24
-  attr :minutes, :integer
-  slot :legal
-  slot :inner_block, required: true
-
-  def promo(assigns) do
-    assigns = assign_new(assigns, :minutes, fn -> assigns.expiration * 60 end)
-
-    ~H"""
-    <div class="promo">
-      <div class="deal">
-        <%= render_slot(@inner_block) %>
-      </div>
-      <div class="expiration">
-        Deal expires in <%= @expiration %> HOURS AND <%= @minutes %> MINUTES
-      </div>
-      <div class="legal">
-        <%= render_slot(@legal) %>
-      </div>
-    </div>
-    """
-  end
-
   attr :label, :string, required: true
 
   def badge(assigns) do
