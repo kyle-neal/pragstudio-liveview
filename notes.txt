@@ -11,3 +11,6 @@ phx-debounce delays round trip to server on form changes
 
 You can use this to inspect assigns in html
         <%= inspect(@matches) %>
+
+
+!! import vs alias: import bring all functions in the file, alias requires the Module name be prefixed. IE) Boats.list_boats
