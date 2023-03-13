@@ -1,6 +1,7 @@
 defmodule LiveViewStudioWeb.FlightsLive do
   use LiveViewStudioWeb, :live_view
 
+  import LiveViewStudioWeb.CustomComponents
   alias LiveViewStudio.Flights
   alias LiveViewStudio.Airports
 
@@ -48,7 +49,7 @@ defmodule LiveViewStudioWeb.FlightsLive do
         </option>
       </datalist>
 
-      <div :if={@loading} class="loader">Loading...</div>
+      <.loading_dots loading={@loading} />
 
       <div class="flights">
         <ul>

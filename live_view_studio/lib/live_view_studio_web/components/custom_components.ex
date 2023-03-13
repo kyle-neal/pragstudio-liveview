@@ -26,4 +26,27 @@ defmodule LiveViewStudioWeb.CustomComponents do
     </span>
     """
   end
+
+  attr :visible, :boolean, required: true
+  attr :class, :string, default: nil
+
+  def loading_dots(assigns) do
+    ~H"""
+    <div :if={@loading} class={@class}>Loading...</div>
+    """
+  end
+
+  attr :visible, :boolean, required: true
+  attr :class, :string, default: nil
+
+  def loading_spinner(assigns) do
+    ~H"""
+    <div :if={@visible} class="flex justify-center my-10 relative">
+      <div class="w-12 h-12 rounded-full absolute border-8 border-gray-300">
+      </div>
+      <div class="w-12 h-12 rounded-full absolute border-8 border-indigo-400 border-t-transparent animate-spin">
+      </div>
+    </div>
+    """
+  end
 end
