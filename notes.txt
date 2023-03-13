@@ -14,3 +14,8 @@ You can use this to inspect assigns in html
 
 
 !! import vs alias: import bring all functions in the file, alias requires the Module name be prefixed. IE) Boats.list_boats
+
+In an .link, using href creates new liveview process by server doing a GET request where as using patch adds a special phoenix class to the resulting <a> 
+to indicate that it's a 'patch' (JS intercepts the message)
+
+navigate in a .link disconnects current live view process and mounts a new one!
